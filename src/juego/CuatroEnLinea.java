@@ -31,7 +31,7 @@ public class CuatroEnLinea {
 	String jugadorRojo = "";
 	String jugadorAmarillo = "";
 	String turno;
-	
+
 	Casillero[][] juego;
 
 	public CuatroEnLinea(int filas, int columnas, String jugadorRojo,
@@ -100,25 +100,23 @@ public class CuatroEnLinea {
 	 * @param columna
 	 */
 	public void soltarFicha(int columna) {
-		
+
 		boolean jugo = false;
-		
-		for(int i = 0; i < contarFilas() && !termino() && !jugo; i++ ){
-			
-			
+
+		for (int i = 0; i < contarFilas() && !termino() && !jugo; i++) {
+
 			jugo = juego[contarFilas() - 1 - i][columna - 1] == Casillero.VACIO;
-			if(jugo && turno == jugadorRojo){
-				
+			if (jugo && turno == jugadorRojo) {
+
 				juego[contarFilas() - 1 - i][columna - 1] = Casillero.ROJO;
 				turno = jugadorAmarillo;
-				
-			} else if(jugo && turno == jugadorAmarillo){
-				
+
+			} else if (jugo && turno == jugadorAmarillo) {
+
 				juego[contarFilas() - 1 - i][columna - 1] = Casillero.AMARILLO;
 				turno = jugadorRojo;
 			}
 		}
-		
 
 	}
 
@@ -130,14 +128,14 @@ public class CuatroEnLinea {
 
 		boolean termino = false;
 		boolean noHayLibre = true;
-		
-		for(int c = 0; c < contarColumnas() && noHayLibre; c++){
-			
+
+		for (int c = 0; c < contarColumnas() && noHayLibre; c++) {
+
 			noHayLibre = (juego[0][c] != Casillero.VACIO);
-			
+
 		}
-		
-		termino = hayGanador() || noHayLibre; 
+
+		termino = hayGanador() || noHayLibre;
 		return termino;
 	}
 
@@ -146,7 +144,21 @@ public class CuatroEnLinea {
 	 */
 	public boolean hayGanador() {
 
-		return false;
+		boolean hayGanador = false;
+
+		/* Horizontal */
+		for (int f = 0; f < contarFilas() && !hayGanador; f++) {
+
+			for (int i = 0; i < contarColumnas() - 4 && !hayGanador; i++) {
+
+				hayGanador = (juego[f][i] == juego[f][i + 1])
+						&& (juego[f][i] == juego[f][i + 2])
+						&& (juego[f][i] == juego[f][i + 3])
+						&& (juego[f][i] != Casillero.VACIO);
+			}
+		}
+
+		return hayGanador;
 	}
 
 	/**
@@ -155,6 +167,6 @@ public class CuatroEnLinea {
 	 */
 	public String obtenerGanador() {
 
-		return null;
+		return "Hola";
 	}
 }
