@@ -30,7 +30,7 @@ public class CuatroEnLinea {
 	int columnas = 4;
 	String jugadorRojo = "";
 	String jugadorAmarillo = "";
-	String turno;
+	String turno = "";
 
 	Casillero[][] juego;
 
@@ -149,7 +149,7 @@ public class CuatroEnLinea {
 		/* Horizontal */
 		for (int f = 0; f < contarFilas() && !hayGanador; f++) {
 
-			for (int i = 0; i < contarColumnas() - 4 && !hayGanador; i++) {
+			for (int i = 0; i < contarColumnas() - 3 && !hayGanador; i++) {
 
 				hayGanador = (juego[f][i] == juego[f][i + 1])
 						&& (juego[f][i] == juego[f][i + 2])
@@ -157,6 +157,10 @@ public class CuatroEnLinea {
 						&& (juego[f][i] != Casillero.VACIO);
 			}
 		}
+		
+		/* Vertical */
+		
+		/* Diagonal */
 
 		return hayGanador;
 	}
@@ -167,6 +171,15 @@ public class CuatroEnLinea {
 	 */
 	public String obtenerGanador() {
 
-		return "Hola";
+		String ganador = "";
+		
+		if (turno == jugadorAmarillo){
+			
+			ganador = jugadorRojo;
+		} else {
+			
+			ganador = jugadorAmarillo;
+		}
+		return ganador;
 	}
 }

@@ -50,6 +50,9 @@ public class Tablero {
 		double ancho = juego.contarColumnas() * ANCHO_COLUMNA;
 		double alto = (juego.contarFilas() * ALTO_FILA) + ALTURA_BOTON;
 		
+		/*Color Fondo*/
+		grilla.setStyle("-fx-background-color: #018DEF;");
+		
 		Scene escena = new Scene(grilla, ancho, alto);
 
 		escenario.setScene(escena);
@@ -154,7 +157,7 @@ public class Tablero {
 		
 		if (juego.hayGanador()) {
 		
-			textoResultado = new Text("Ganó el jugador " + juego.obtenerGanador());
+			textoResultado = new Text("Ganó: " + juego.obtenerGanador());
 			
 		} else {
 			

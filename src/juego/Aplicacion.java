@@ -72,11 +72,11 @@ public class Aplicacion extends Application {
 
 	private void crearControles() {
 
-		campoNombreJugadorRojo = new TextField("rojo");
-		campoNombreJugadorAmarillo = new TextField("amarillo");
+		campoNombreJugadorRojo = new TextField("Rojo");
+		campoNombreJugadorAmarillo = new TextField("Amarillo");
 		
 		campoColumnas = new TextField("7");
-		campoFilas = new TextField("7");
+		campoFilas = new TextField("6");
 		
 		botonIniciar = new Button("Iniciar");
 		botonIniciar.setOnAction(new IniciarJuego(this));
