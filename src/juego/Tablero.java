@@ -105,9 +105,10 @@ public class Tablero {
 		
 		Circle dibujoCasillero = new Circle(RADIO, obtenerPintura(casillero));
 		
-		dibujoCasillero.setStroke(new Color(0.5, 0.5, 0.5, 1.0));
+		dibujoCasillero.setStroke(new Color(0, 0, 0, 1.0));
 		dibujoCasillero.setScaleX(0.95);
 		dibujoCasillero.setScaleY(0.95);
+		dibujoCasillero.setStrokeWidth(3.0);
 		return dibujoCasillero;
 	}
 
