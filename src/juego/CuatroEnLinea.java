@@ -1,7 +1,7 @@
 package juego;
 
 /**
- * Juego Cuatro en LÌ≠nea
+ * Juego Cuatro en L√≠¬≠nea
  * 
  * Reglas:
  * 
@@ -14,7 +14,7 @@ public class CuatroEnLinea {
 	 * pre : 'filas' y 'columnas' son mayores o iguales a 4. post: empieza el
 	 * juego entre el jugador que tiene fichas rojas, identificado como
 	 * 'jugadorRojo' y el jugador que tiene fichas amarillas, identificado como
-	 * 'jugadorAmarillo'. Todo el tablero est· vacÌo.
+	 * 'jugadorAmarillo'. Todo el tablero est√° vac√≠o.
 	 * 
 	 * @param filas
 	 *            : cantidad de filas que tiene el tablero.
@@ -62,7 +62,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: devuelve la cantidad m·xima de fichas que se pueden apilar en el
+	 * post: devuelve la cantidad m√°xima de fichas que se pueden apilar en el
 	 * tablero.
 	 */
 	public int contarFilas() {
@@ -71,7 +71,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: devuelve la cantidad m·xima de fichas que se pueden alinear en el
+	 * post: devuelve la cantidad m√°xima de fichas que se pueden alinear en el
 	 * tablero.
 	 */
 	public int contarColumnas() {
@@ -80,9 +80,9 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * pre : fila est· en el intervalo [1, contarFilas()], columnas est· en el
-	 * intervalo [1, contarColumnas()]. post: indica quÈ ocupa el casillero en
-	 * la posiciÛn dada por fila y columna.
+	 * pre : fila est√° en el intervalo [1, contarFilas()], columnas est√° en el
+	 * intervalo [1, contarColumnas()]. post: indica qu√© ocupa el casillero en
+	 * la posici√≥n dada por fila y columna.
 	 * 
 	 * @param fila
 	 * @param columna
@@ -93,8 +93,8 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * pre : el juego no terminÛ, columna est· en el intervalo [1,
-	 * contarColumnas()] y a˙n queda un Casillero.VACIO en la columna indicada.
+	 * pre : el juego no termin√≥, columna est√° en el intervalo [1,
+	 * contarColumnas()] y a√∫n queda un Casillero.VACIO en la columna indicada.
 	 * post: deja caer una ficha en la columna indicada.
 	 * 
 	 * @param columna
@@ -121,8 +121,8 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: indica si el juego terminÛ porque uno de los jugadores ganÛ o no
-	 * existen casilleros vacÌos.
+	 * post: indica si el juego termin√≥ porque uno de los jugadores gan√≥ o no
+	 * existen casilleros vac√≠os.
 	 */
 	public boolean termino() {
 
@@ -140,7 +140,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: indica si el juego terminÛ y tiene un ganador.
+	 * post: indica si el juego termin√≥ y tiene un ganador.
 	 */
 	public boolean hayGanador() {
 
@@ -149,35 +149,73 @@ public class CuatroEnLinea {
 		/* Horizontal */
 		for (int f = 0; f < contarFilas() && !hayGanador; f++) {
 
-			for (int i = 0; i < contarColumnas() - 3 && !hayGanador; i++) {
+			for (int c = 0; c < contarColumnas() - 3 && !hayGanador; c++) {
 
-				hayGanador = (juego[f][i] == juego[f][i + 1])
-						&& (juego[f][i] == juego[f][i + 2])
-						&& (juego[f][i] == juego[f][i + 3])
-						&& (juego[f][i] != Casillero.VACIO);
+				hayGanador = (juego[f][c] == juego[f][c + 1])
+						&& (juego[f][c] == juego[f][c + 2])
+						&& (juego[f][c] == juego[f][c + 3])
+						&& (juego[f][c] != Casillero.VACIO);
 			}
 		}
-		
+
 		/* Vertical */
-		
-		/* Diagonal */
+
+		for (int c = 0; c < contarColumnas() && !hayGanador; c++) {
+
+			for (int f = 0; f < contarFilas() - 3 && !hayGanador; f++) {
+
+				hayGanador = (juego[f][c] == juego[f + 1][c])
+						&& (juego[f][c] == juego[f + 2][c])
+						&& (juego[f][c] == juego[f + 3][c])
+						&& (juego[f][c] != Casillero.VACIO);
+			}
+		}
+
+		/* Diagonal hacia arriba */
+
+		for (int f = 3; f < contarFilas() && !hayGanador; f++) {
+
+			for (int c = 0; c < contarColumnas() - 3 && !hayGanador; c++) {
+
+				hayGanador = (juego[f][c] == juego[f - 1][c + 1])
+						&& (juego[f][c] == juego[f - 2][c + 2])
+						&& (juego[f][c] == juego[f - 3][c + 3])
+						&& (juego[f][c] != Casillero.VACIO);
+
+			}
+
+		}
+
+		/* Diagonal hacia abajo */
+
+		for (int f = 0; f < contarFilas() - 3 && !hayGanador; f++) {
+
+			for (int c = 0; c < contarColumnas() - 3 && !hayGanador; c++) {
+
+				hayGanador = (juego[f][c] == juego[f + 1][c + 1])
+						&& (juego[f][c] == juego[f + 2][c + 2])
+						&& (juego[f][c] == juego[f + 3][c + 3])
+						&& (juego[f][c] != Casillero.VACIO);
+
+			}
+		}
 
 		return hayGanador;
 	}
 
 	/**
-	 * pre : el juego terminÛ. post: devuelve el nombre del jugador que ganÛ el
+	 * pre : el juego termin√≥. post: devuelve el nombre del jugador que gan√≥ el
 	 * juego.
 	 */
 	public String obtenerGanador() {
 
 		String ganador = "";
-		
-		if (turno == jugadorAmarillo){
-			
+
+		if (turno == jugadorAmarillo) {
+
 			ganador = jugadorRojo;
 		} else {
-			
+
 			ganador = jugadorAmarillo;
 		}
 		return ganador;
