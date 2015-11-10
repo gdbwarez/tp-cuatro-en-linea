@@ -3,6 +3,8 @@ package juego;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -14,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * Representación gráfica del Tablero del Juego Cuatro en Lí­nea.
+ * Representación gráfica del Tablero del Juego Cuatro en Línea.
  * 
  */
 public class Tablero {
@@ -69,9 +71,18 @@ public class Tablero {
 	 */
 	private void dibujarBotones() {
 		
+		Image imageDecline = new Image(getClass().getResourceAsStream("down.png"));
+		
 		for (int columna = 1; columna <= juego.contarColumnas(); columna++) {
 
-			Button botonSoltarFicha = new Button("soltar");
+			
+			Button botonSoltarFicha = new Button();
+			
+			/*Flecha abajo*/
+			botonSoltarFicha.setGraphic(new ImageView(imageDecline));
+			
+			//botonSoltarFicha.setStyle("-fx-focus-color: transparent; -fx-background-insets: 0, 0, 1, 2;");
+			
 			botonSoltarFicha.setMinHeight(ALTURA_BOTON);
 
 			botonSoltarFicha.setOnAction(new SoltarFicha(this, juego, columna));
@@ -151,6 +162,7 @@ public class Tablero {
 		Stage dialogo = new Stage();
 		
 		BorderPane panelGanador = new BorderPane();
+		dialogo.setTitle("Resultado");
 		panelGanador.setPadding(new Insets(10.0));
 		Text textoResultado;
 		Font fuente = new Font(40.0);
