@@ -2,14 +2,17 @@ package juego;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -94,11 +97,38 @@ public class Aplicacion extends Application {
 		int filas = Integer.parseInt(campoFilas.getText());
 		int columnas = Integer.parseInt(campoColumnas.getText());
 		
-		CuatroEnLinea juego = new CuatroEnLinea(filas, columnas, 
-												nombreJugadorRojo, nombreJugadorAmarillo);
+		/* Valida filas y columnas >=4 */
 		
-		Tablero tablero = new Tablero(juego);
-		tablero.mostrar();
+		if(filas >= 4 && columnas >= 4){
+		
+			CuatroEnLinea juego = new CuatroEnLinea(filas, columnas, 
+												nombreJugadorRojo, nombreJugadorAmarillo);
+			Tablero tablero = new Tablero(juego);
+			tablero.mostrar();
+			
+		}else {
+			
+			Stage dialogo = new Stage();
+			
+			BorderPane panelFilasYColumnas = new BorderPane();
+			dialogo.setTitle("Error");
+			panelFilasYColumnas.setPadding(new Insets(10.0));
+			Text textoFilasYColumnas;
+			Font fuente = new Font(20.0);
+			textoFilasYColumnas = new Text("Coloca filas y columnas mayores o iguales a 4");
+			textoFilasYColumnas.setFont(fuente);
+			panelFilasYColumnas.setCenter(textoFilasYColumnas);
+			
+			Scene escenaFilasYColumnas = new Scene(panelFilasYColumnas);
+			
+			dialogo.setScene(escenaFilasYColumnas);
+			dialogo.initModality(Modality.WINDOW_MODAL);
+			dialogo.setResizable(false);
+			
+			dialogo.showAndWait();
+		}
+		
+		
 	}
 	
 	public static void main(String[] args) {
