@@ -201,7 +201,7 @@ public class Tablero {
 
 		if (juego.hayGanador()) {
 
-			textoResultado = new Text("Ganó: " + juego.obtenerGanador());
+			textoResultado = new Text("Gan\u00f3: " + juego.obtenerGanador());
 
 		} else {
 

@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class Aplicacion extends Application {
 
-	public static final String TITULO = "Cuatro en Línea";
+	public static final String TITULO = "Cuatro en L\u00ednea";
 	
 	private GridPane grilla;
 	

@@ -1,7 +1,7 @@
 package juego;
 
 /**
- * Juego Cuatro en L√≠¬≠nea
+ * Juego Cuatro en LÌnea
  * 
  * Reglas:
  * 
@@ -14,7 +14,7 @@ public class CuatroEnLinea {
 	 * pre : 'filas' y 'columnas' son mayores o iguales a 4. post: empieza el
 	 * juego entre el jugador que tiene fichas rojas, identificado como
 	 * 'jugadorRojo' y el jugador que tiene fichas amarillas, identificado como
-	 * 'jugadorAmarillo'. Todo el tablero est√° vac√≠o.
+	 * 'jugadorAmarillo'. Todo el tablero est· vacÌo.
 	 * 
 	 * @param filas
 	 *            : cantidad de filas que tiene el tablero.
@@ -62,7 +62,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: devuelve la cantidad m√°xima de fichas que se pueden apilar en el
+	 * post: devuelve la cantidad m·xima de fichas que se pueden apilar en el
 	 * tablero.
 	 */
 	public int contarFilas() {
@@ -71,7 +71,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * post: devuelve la cantidad m√°xima de fichas que se pueden alinear en el
+	 * post: devuelve la cantidad m·xima de fichas que se pueden alinear en el
 	 * tablero.
 	 */
 	public int contarColumnas() {
@@ -80,9 +80,9 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * pre : fila est√° en el intervalo [1, contarFilas()], columnas est√° en el
-	 * intervalo [1, contarColumnas()]. post: indica qu√© ocupa el casillero en
-	 * la posici√≥n dada por fila y columna.
+	 * pre : fila est· en el intervalo [1, contarFilas()], columnas est· en el
+	 * intervalo [1, contarColumnas()]. post: indica quÈ ocupa el casillero en
+	 * la posiciÛn dada por fila y columna.
 	 * 
 	 * @param fila
 	 * @param columna
@@ -93,8 +93,8 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * pre : el juego no termin√≥, columna est√° en el intervalo [1,
-	 * contarColumnas()] y a√∫n queda un Casillero.VACIO en la columna indicada.
+	 * pre : el juego no terminÛ, columna est· en el intervalo [1,
+	 * contarColumnas()] y a˙n queda un Casillero.VACIO en la columna indicada.
 	 * post: deja caer una ficha en la columna indicada.
 	 * 
 	 * @param columna
@@ -102,6 +102,11 @@ public class CuatroEnLinea {
 	public void soltarFicha(int columna) {
 
 		boolean jugo = false;
+		
+		if (columna < 1 || columna > contarColumnas()){
+			
+			throw new Error("Columna fuera de rango");
+		}
 
 		for (int i = 0; i < contarFilas() && !termino() && !jugo; i++) {
 
@@ -204,7 +209,7 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * pre : el juego termin√≥. post: devuelve el nombre del jugador que gan√≥
+	 * pre : el juego terminÛ. post: devuelve el nombre del jugador que ganÛ
 	 * el juego.
 	 */
 	public String obtenerGanador() {
@@ -222,7 +227,7 @@ public class CuatroEnLinea {
 	}
 
 	/*
-	 * post: Devuelve el jugador que tiene el turno.
+	 * MÈtodos p˙blicos con el propÛsito de mejorar la interfaz gr·fica
 	 */
 	public String obtenerTurno() {
 
