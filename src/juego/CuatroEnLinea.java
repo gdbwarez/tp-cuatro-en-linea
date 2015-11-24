@@ -204,8 +204,8 @@ public class CuatroEnLinea {
 	}
 
 	/**
-	 * pre : el juego terminó. post: devuelve el nombre del jugador que ganó el
-	 * juego.
+	 * pre : el juego terminó. post: devuelve el nombre del jugador que ganó
+	 * el juego.
 	 */
 	public String obtenerGanador() {
 
@@ -219,5 +219,23 @@ public class CuatroEnLinea {
 			ganador = jugadorAmarillo;
 		}
 		return ganador;
+	}
+
+	/*
+	 * post: Devuelve el jugador que tiene el turno.
+	 */
+	public String obtenerTurno() {
+
+		return turno;
+	}
+
+	public String obtenerJugadorRojo() {
+
+		return jugadorRojo;
+	}
+
+	public String obtenerJugadorAmarillo() {
+
+		return jugadorAmarillo;
 	}
 }
