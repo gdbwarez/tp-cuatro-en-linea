@@ -347,4 +347,17 @@ public class PruebasCuatroEnLinea {
 		Assert.assertFalse(hayGanador);
 
 	}
+	
+	@Test (expected = Error.class)
+	public void soltarFichaConColumnaMayorARango() {
+
+		/* Condición Inicial */
+		CuatroEnLinea partida = new CuatroEnLinea(4, 4, "Red", "Yellow");
+
+		/* Operaciones */
+		partida.soltarFicha(1);
+		partida.soltarFicha(1);
+		partida.soltarFicha(5);
+
+	}
 }

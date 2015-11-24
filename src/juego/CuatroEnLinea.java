@@ -3,10 +3,11 @@ package juego;
 /**
  * Juego Cuatro en Línea
  * 
- * Reglas:
- * 
- * ...
- *
+ *	Reglas: El tablero tiene, mínimo 4 filas y 4 columnas por las que caen las fichas,
+ * que se introducen por la parte superior. El juego tiene un total de 2 jugadores y a cada
+ * uno se le asigna un color diferente.
+ * El objetivo de cada jugador para ganar es intentar unir cuatro fichas en linea recta
+ * del color que le corresponde, de forma vertical, horizontal o diagonal.
  */
 public class CuatroEnLinea {
 

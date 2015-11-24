@@ -90,8 +90,7 @@ public class Tablero {
 	 */
 	private void dibujarBotones() {
 
-		Image imageDecline = new Image(getClass().getResourceAsStream(
-				"down.png"));
+		Image imageDecline = new Image("file:res/down.png");
 
 		for (int columna = 1; columna <= juego.contarColumnas(); columna++) {
 
